@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { BackendErrorMessages } from "../../components/BackendErrorMessages/BackendErrorMessages";
 
-// import CKEditor from "@ckeditor/ckeditor5-react";
-// import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-
-import ReactSummernote from "react-summernote";
-import "react-summernote/dist/react-summernote.css"; // import styles
-import "react-summernote/lang/summernote-ru-RU";
+import CKEditor from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 const ArticleForm = ({ onSubmit, errors, initialValues }) => {
   const [title, setTitle] = useState("");
@@ -59,25 +55,6 @@ const ArticleForm = ({ onSubmit, errors, initialValues }) => {
                   />
                 </fieldset>
                 <fieldset className="form-group">
-                  <ReactSummernote
-                    value="Default value"
-                    options={{
-                      lang: "ru-RU",
-                      height: 350,
-                      dialogsInBody: true,
-                      toolbar: [
-                        ["style", ["style"]],
-                        ["font", ["bold", "underline", "clear"]],
-                        ["fontname", ["fontname"]],
-                        ["para", ["ul", "ol", "paragraph"]],
-                        ["table", ["table"]],
-                        ["insert", ["link", "picture", "video"]],
-                        ["view", ["fullscreen", "codeview"]]
-                      ]
-                    }}
-                    onChange={e => setBody(e)}
-                    codeview={true}
-                  />
                   {/* <textarea
                     rows="8"
                     className="form-control"
@@ -85,15 +62,14 @@ const ArticleForm = ({ onSubmit, errors, initialValues }) => {
                     value={body}
                     onChange={e => setBody(e.target.value)}
                   ></textarea> */}
-                  {/* <CKEditor
+                  <CKEditor
                     editor={ClassicEditor}
                     data={body}
                     onChange={(event, editor) => {
                       const data = editor.getData();
-                      console.log(data);
                       setBody(data && data)
                     }}
-                  /> */}
+                  />
                 </fieldset>
                 <fieldset className="form-group">
                   <input
